@@ -8,5 +8,5 @@ export const MaterialTable: any = styled(Table)`
 
 export const MaterialPaper: any = styled(Paper)`
   width: 80%;
-  margin: 7em auto 0;
+  margin: 2em auto 0;
 `;

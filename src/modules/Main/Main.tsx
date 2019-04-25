@@ -1,8 +1,9 @@
 import React from 'react';
 import { MainState } from './types';
-import { MainHeader, HeaderTitle } from './styled';
+import { MainHeader, HeaderTitle, MainContainer } from './styled';
 
 import Table from 'src/components/Table';
+import Slider from 'src/components/Slider';
 
 class Main extends React.Component<{}, MainState> {
   public readonly state = {
@@ -10,7 +11,7 @@ class Main extends React.Component<{}, MainState> {
 
   public render = () => {
     return(
-      <div>
+      <MainContainer>
         <MainHeader>
           <HeaderTitle 
             component='h2' 
@@ -20,8 +21,10 @@ class Main extends React.Component<{}, MainState> {
           </HeaderTitle>
         </MainHeader>
 
+        <Slider />
+
         <Table />
-      </div>
+      </MainContainer>
     );
   }
 }
