@@ -1,4 +1,5 @@
-node_modules
+workout-finances-api/node_modules
+workout-finances-gui/node_modules
 .idea
 .vscode
 .cache

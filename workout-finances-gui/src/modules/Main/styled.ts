@@ -13,3 +13,9 @@ export const HeaderTitle: any = styled(Typography)`
   margin-left: 2rem !important;
   margin-top: 0.5rem !important;
 `;
+
+export const MainContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+`;
