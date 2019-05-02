@@ -1,5 +1,6 @@
 workout-finances-api/node_modules
 workout-finances-gui/node_modules
+workout-finances-gui/jest_0
 .idea
 .vscode
 .cache
