@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import AppBar from '@material-ui/core/AppBar';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 
 // @ts-nocheck
 export const MainHeader: any = styled(AppBar)`
@@ -9,13 +9,24 @@ export const MainHeader: any = styled(AppBar)`
 
 export const HeaderTitle: any = styled(Typography)`
   color: white !important;
-  font-size: 24px;
+  font-size: 28px !important;
   margin-left: 2rem !important;
-  margin-top: 0.5rem !important;
+  margin-top: 1.2rem !important;
 `;
 
 export const MainContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+`;
+
+export const ButtonsContainer = styled.div`
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const AddWorkout: any = styled(Button)`
 `;

@@ -15,6 +15,10 @@ describe('<Main />', () => {
     expect(MainComponent).toContainExactlyOneMatchingElement('.header-title');
   });
 
+  it('should contain button for adding workouts', () => {
+    expect(MainComponent).toContainExactlyOneMatchingElement('.add-workout');
+  });
+
   it('should be equal to snapshot', () => {
     expect(MainComponentToJson).toMatchSnapshot();
   });
