@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Main /> should be equal to snapshot 1`] = `
+<styled.div>
+  <Styled(WithStyles(AppBar))>
+    <Styled(WithStyles(Typography))
+      className="header-title"
+      component="h2"
+      variant="h2"
+    >
+      Workout Finances
+    </Styled(WithStyles(Typography))>
+  </Styled(WithStyles(AppBar))>
+  <Slider />
+  <Table />
+</styled.div>
+`;
