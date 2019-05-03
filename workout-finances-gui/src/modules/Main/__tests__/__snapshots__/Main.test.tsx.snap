@@ -13,5 +13,14 @@ exports[`<Main /> should be equal to snapshot 1`] = `
   </Styled(WithStyles(AppBar))>
   <Slider />
   <Table />
+  <styled.div>
+    <Styled(WithStyles(Button))
+      className="add-workout"
+      color="primary"
+      variant="contained"
+    >
+      Добавить тренировку
+    </Styled(WithStyles(Button))>
+  </styled.div>
 </styled.div>
 `;
