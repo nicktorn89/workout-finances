@@ -4,12 +4,26 @@ import { MainHeader, HeaderTitle, MainContainer, AddWorkout, ButtonsContainer } 
 
 import Table from 'src/components/Table';
 import Slider from 'src/components/Slider';
+import Modal from 'src/components/Modal';
 
 class Main extends React.Component<{}, MainState> {
   public readonly state = {
+    activeModal: false,
   };
 
+  public toggleModal = (e: React.MouseEvent) => {
+    const { activeModal } = this.state;
+
+    this.setState({ activeModal: !activeModal });
+  }
+
+  public createWorkout = (e: React.MouseEvent) => {
+    this.toggleModal(e);
+  }
+
   public render = () => {
+    const { activeModal } = this.state;
+
     return(
       <MainContainer>
         <MainHeader>
@@ -31,10 +45,18 @@ class Main extends React.Component<{}, MainState> {
             color='primary'
             variant='contained'
             className='add-workout'
+            onClick={this.toggleModal}
           >
           Добавить тренировку
           </ AddWorkout>
         </ButtonsContainer>
+
+        <Modal 
+          isActive={activeModal}
+          title='Создание записи о тренировке'
+          onCancel={this.toggleModal}
+          onOk={this.createWorkout}
+        />
       </MainContainer>
     );
   }

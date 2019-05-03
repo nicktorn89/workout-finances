@@ -17,10 +17,17 @@ exports[`<Main /> should be equal to snapshot 1`] = `
     <Styled(WithStyles(Button))
       className="add-workout"
       color="primary"
+      onClick={[Function]}
       variant="contained"
     >
       Добавить тренировку
     </Styled(WithStyles(Button))>
   </styled.div>
+  <Modal
+    isActive={false}
+    onCancel={[Function]}
+    onOk={[Function]}
+    title="Создание записи о тренировке"
+  />
 </styled.div>
 `;
