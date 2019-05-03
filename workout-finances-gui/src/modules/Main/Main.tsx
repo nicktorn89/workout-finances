@@ -16,6 +16,7 @@ class Main extends React.Component<{}, MainState> {
           <HeaderTitle 
             component='h2' 
             variant='h2'
+            className='header-title'
           >
             Workout Finances
           </HeaderTitle>
