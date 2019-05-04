@@ -23,7 +23,10 @@ export const ModalHeader: any = styled(Typography)`
 
 export const ModalContent = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  flex-direction: row;
   height: 70%;
 `;
 
