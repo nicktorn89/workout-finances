@@ -28,6 +28,48 @@ exports[`<Main /> should be equal to snapshot 1`] = `
     onCancel={[Function]}
     onOk={[Function]}
     title="Создание записи о тренировке"
-  />
+  >
+    <styled.label>
+      Кол-во человек
+    </styled.label>
+    <Styled(TextField)
+      InputLabelProps={
+        Object {
+          "shrink": true,
+        }
+      }
+      defaultValue=""
+      id="people-number"
+      margin="normal"
+      onChange={[Function]}
+      type="number"
+    />
+    <styled.label>
+      <WithStyles(Switch)
+        checked={false}
+        color="primary"
+        name="isPersonal"
+        onChange={[Function]}
+      />
+      Персональная тренировка
+    </styled.label>
+    <styled.label>
+      <WithStyles(Switch)
+        checked={false}
+        name="isFree"
+        onChange={[Function]}
+      />
+      Бесплатная тренировка
+    </styled.label>
+    <styled.label>
+      <WithStyles(Switch)
+        checked={false}
+        color="primary"
+        name="isJumps"
+        onChange={[Function]}
+      />
+      Тренировка на джампах
+    </styled.label>
+  </Modal>
 </styled.div>
 `;

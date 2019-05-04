@@ -11,3 +11,7 @@ test('should return 0 if workout is free', () => {
 test('should return workout*100', () => {
   expect(countWorkout(20, true)).toBe(2000);
 });
+
+test('should return workout*100 for Jumps', () => {
+  expect(countWorkout(20, false, false, true)).toBe(2000);
+});

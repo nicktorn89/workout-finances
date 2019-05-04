@@ -1,7 +1,9 @@
-export const countWorkout = (workoutsCount: number, personal?: boolean, free?: boolean): number => {
+export const countWorkout = (peopleCount: number, personal?: boolean, free?: boolean, jumps?: boolean): number => {
   if (free) return 0;
 
-  if (personal) return workoutsCount * 100;
+  if (personal) return peopleCount * 100;
 
-  return workoutsCount * 30;
+  if (jumps) return peopleCount * 100;
+
+  return peopleCount * 30;
 };
