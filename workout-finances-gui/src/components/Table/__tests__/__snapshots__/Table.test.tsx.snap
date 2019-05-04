@@ -14,6 +14,15 @@ exports[`<Slider /> Should be equal to snapshot 1`] = `
         <WithStyles(TableCell)>
           Прибыль
         </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Бесплатная
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Персональная
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Джампы
+        </WithStyles(TableCell)>
       </WithStyles(TableRow)>
     </WithStyles(TableHead)>
     <WithStyles(TableBody)>
@@ -36,6 +45,17 @@ exports[`<Slider /> Should be equal to snapshot 1`] = `
         >
           222222
         </WithStyles(TableCell)>
+        <WithStyles(TableCell)
+          align="left"
+        />
+        <WithStyles(TableCell)
+          align="left"
+        >
+          <pure(DoneIcon) />
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)
+          align="left"
+        />
       </WithStyles(TableRow)>
     </WithStyles(TableBody)>
   </Styled(WithStyles(Table))>
