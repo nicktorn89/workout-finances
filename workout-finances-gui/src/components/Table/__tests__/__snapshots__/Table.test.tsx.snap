@@ -5,6 +5,7 @@ exports[`<Slider /> Should be equal to snapshot 1`] = `
   <Styled(WithStyles(Table))>
     <WithStyles(TableHead)>
       <WithStyles(TableRow)>
+        <WithStyles(TableCell) />
         <WithStyles(TableCell)>
           Дата
         </WithStyles(TableCell)>
@@ -25,39 +26,7 @@ exports[`<Slider /> Should be equal to snapshot 1`] = `
         </WithStyles(TableCell)>
       </WithStyles(TableRow)>
     </WithStyles(TableHead)>
-    <WithStyles(TableBody)>
-      <WithStyles(TableRow)
-        key="1"
-      >
-        <WithStyles(TableCell)
-          component="th"
-          scope="row"
-        >
-          17.11
-        </WithStyles(TableCell)>
-        <WithStyles(TableCell)
-          align="left"
-        >
-          222
-        </WithStyles(TableCell)>
-        <WithStyles(TableCell)
-          align="left"
-        >
-          222222
-        </WithStyles(TableCell)>
-        <WithStyles(TableCell)
-          align="left"
-        />
-        <WithStyles(TableCell)
-          align="left"
-        >
-          <pure(DoneIcon) />
-        </WithStyles(TableCell)>
-        <WithStyles(TableCell)
-          align="left"
-        />
-      </WithStyles(TableRow)>
-    </WithStyles(TableBody)>
+    <WithStyles(TableBody) />
   </Styled(WithStyles(Table))>
 </Styled(WithStyles(Paper))>
 `;

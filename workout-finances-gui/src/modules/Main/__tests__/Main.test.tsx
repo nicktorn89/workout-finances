@@ -11,14 +11,6 @@ describe('<Main />', () => {
     expect(MainComponent).toExist();
   });
 
-  it('should contain only one h2 title with text - Workout Finances', () => {
-    expect(MainComponent).toContainExactlyOneMatchingElement('.header-title');
-  });
-
-  it('should contain button for adding workouts', () => {
-    expect(MainComponent).toContainExactlyOneMatchingElement('.add-workout');
-  });
-
   it('should be equal to snapshot', () => {
     expect(MainComponentToJson).toMatchSnapshot();
   });
