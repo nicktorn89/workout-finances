@@ -6,7 +6,7 @@ const getWorkouts = (req, res) => {
 		.then((workouts) => {			
 			return res.json({
 				status: 0,
-				workouts: workouts, // Set all dishes to response
+				workouts: workouts, // Set all workouts to response
 			});
 		})
 		.catch((err) => {
@@ -20,12 +20,15 @@ const addWorkout = (req, res) => {
 		
 		newWorkout
 			.save()
-			.then((workout) => {
-				return res.json({
-					status: 0,
-					data: 'Тренировка записана',
-				})
+			.then(() => {
+				return DB.Workouts.find({});
 			})
+			.then((workouts) => (
+				res.json({
+					status: 0,
+					workouts: workouts, // Set all workouts to response
+				})
+			))
 			.catch((err) => {
 				console.log(err);
 			});
@@ -35,7 +38,7 @@ const addWorkout = (req, res) => {
 };
 
 const removeWorkout = (req, res) => {
-	console.log(`Remove dish with id ${req.body}`);
+	console.log(`Remove workout with id ${req.body}`);
 	if (req.body) {
 		DB.Workouts.deleteOne({
 			_id: req.body.id,

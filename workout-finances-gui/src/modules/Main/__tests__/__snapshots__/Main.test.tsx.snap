@@ -1,75 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Main /> should be equal to snapshot 1`] = `
-<styled.div>
-  <Styled(WithStyles(AppBar))>
-    <Styled(WithStyles(Typography))
-      className="header-title"
-      component="h2"
-      variant="h2"
-    >
-      Workout Finances
-    </Styled(WithStyles(Typography))>
-  </Styled(WithStyles(AppBar))>
-  <Slider />
-  <Table />
-  <styled.div>
-    <Styled(WithStyles(Button))
-      className="add-workout"
-      color="primary"
-      onClick={[Function]}
-      variant="contained"
-    >
-      Добавить тренировку
-    </Styled(WithStyles(Button))>
-  </styled.div>
-  <Modal
-    isActive={false}
-    onCancel={[Function]}
-    onOk={[Function]}
-    title="Создание записи о тренировке"
-  >
-    <styled.label>
-      Кол-во человек
-    </styled.label>
-    <Styled(TextField)
-      InputLabelProps={
-        Object {
-          "shrink": true,
-        }
-      }
-      defaultValue=""
-      id="people-number"
-      margin="normal"
-      onChange={[Function]}
-      type="number"
-    />
-    <styled.label>
-      <WithStyles(Switch)
-        checked={false}
-        color="primary"
-        name="isPersonal"
-        onChange={[Function]}
-      />
-      Персональная тренировка
-    </styled.label>
-    <styled.label>
-      <WithStyles(Switch)
-        checked={false}
-        name="isFree"
-        onChange={[Function]}
-      />
-      Бесплатная тренировка
-    </styled.label>
-    <styled.label>
-      <WithStyles(Switch)
-        checked={false}
-        color="primary"
-        name="isJumps"
-        onChange={[Function]}
-      />
-      Тренировка на джампах
-    </styled.label>
-  </Modal>
-</styled.div>
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;

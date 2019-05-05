@@ -4,7 +4,7 @@ import { shallowToJson } from 'enzyme-to-json';
 import Table from '../Table';
 
 describe('<Slider />', () => {
-  const TableComponent = shallow(<Table />);
+  const TableComponent = shallow(<Table data={[]} />);
   const TableComponentToJson = shallowToJson(TableComponent);
   
   it('Should be equal to snapshot', () => {

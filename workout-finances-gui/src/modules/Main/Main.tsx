@@ -1,5 +1,7 @@
 import React, { ChangeEvent } from 'react';
-import { MainState } from './types';
+import { connect } from 'react-redux';
+import { fetchWorkouts, createWorkout, removeWorkout } from 'src/store/modules/actions';
+import { MainState, MainProps } from './types';
 import {
   MainHeader, HeaderTitle, MainContainer,
   AddWorkout, ButtonsContainer, PeopleNumberInput,
@@ -11,15 +13,28 @@ import Table from 'src/components/Table';
 import Slider from 'src/components/Slider';
 import Modal from 'src/components/Modal';
 import { countWorkout } from './utils';
+import { RootStore } from 'src/store/types';
 
-class Main extends React.Component<{}, MainState> {
+class Main extends React.Component<MainProps, MainState> {
   public readonly state = {
     activeModal: false,
     isPersonal: false,
     isFree: false,
     isJumps: false,
     peopleCount: 0,
+    workouts: this.props.workoutsArray,
   };
+
+  public componentDidMount = () => {
+    const { fetchWorkouts } = this.props;
+    fetchWorkouts && fetchWorkouts();
+  }
+
+  public componentDidUpdate = (prevProps: MainProps) => {
+    if (prevProps.workoutsArray !== this.props.workoutsArray) {
+      this.setState({ workouts: this.props.workoutsArray });
+    }
+  }
 
   public toggleModal = () => {
     const { activeModal } = this.state;
@@ -30,10 +45,26 @@ class Main extends React.Component<{}, MainState> {
 
   public createWorkout = () => {
     const { peopleCount, isPersonal, isFree, isJumps } = this.state;
+    const { createWorkout } = this.props;
 
-    console.log(countWorkout(peopleCount, isPersonal, isFree, isJumps));
+    const workoutObject = {
+      isPersonal,
+      isFree,
+      isJumps,
+      date: new Date(),
+      people: peopleCount,
+      price: countWorkout(peopleCount, isPersonal, isFree, isJumps),
+    };
+
+    createWorkout && createWorkout(workoutObject);
 
     this.toggleModal();
+  }
+
+  public removeWorkout = (id: string) => {
+    const { removeWorkout } = this.props;
+
+    removeWorkout && removeWorkout({ id });
   }
 
   public setDefaultValues = () => {
@@ -60,7 +91,7 @@ class Main extends React.Component<{}, MainState> {
   }
 
   public render = () => {
-    const { activeModal, isPersonal, isFree, isJumps } = this.state;
+    const { activeModal, isPersonal, isFree, isJumps, workouts } = this.state;
 
     return (
       <MainContainer>
@@ -68,7 +99,6 @@ class Main extends React.Component<{}, MainState> {
           <HeaderTitle
             component='h2'
             variant='h2'
-            className='header-title'
           >
             Workout Finances
           </HeaderTitle>
@@ -76,13 +106,12 @@ class Main extends React.Component<{}, MainState> {
 
         <Slider />
 
-        <Table />
+        <Table data={workouts!} />
 
         <ButtonsContainer>
           <AddWorkout
             color='primary'
             variant='contained'
-            className='add-workout'
             onClick={this.toggleModal}
           >
             Добавить тренировку
@@ -138,5 +167,14 @@ class Main extends React.Component<{}, MainState> {
     );
   }
 }
+const mapDispatchToProps = {
+  fetchWorkouts,
+  createWorkout,
+  removeWorkout,
+};
 
-export default Main;
+const mapStateToProps = ({ workouts }: RootStore) => ({
+  workoutsArray: workouts,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
