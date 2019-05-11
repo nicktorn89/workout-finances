@@ -1,3 +1,5 @@
+import { WorkoutObject } from 'src/store/modules/types';
+
 export const countWorkout = (peopleCount: number, personal?: boolean, free?: boolean, jumps?: boolean): number => {
   if (free) return 0;
 
@@ -6,4 +8,14 @@ export const countWorkout = (peopleCount: number, personal?: boolean, free?: boo
   if (jumps) return peopleCount * 100;
 
   return peopleCount * 30;
+};
+
+export const getIdFromIndexes = (indexes: number[], workouts: WorkoutObject[]): string[] => {
+  const idArray: string[] = [];
+  
+  indexes.forEach((index) => {
+    idArray.push(workouts[index]._id!);
+  });
+
+  return idArray;
 };

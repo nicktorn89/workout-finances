@@ -29,6 +29,10 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const AddWorkout: any = styled(Button)`
+  margin-right: 1rem !important;
+`;
+
+export const RemoveWorkout: any = styled(Button)`
 `;
 
 export const PeopleNumberInput: any = styled(TextField)`

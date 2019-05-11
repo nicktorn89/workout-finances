@@ -13,7 +13,7 @@ function createData(date: Date, people: number, salary: number,
   return { id, date, people, salary, isFree, isPersonal, isJumps };
 }
 
-const Table: React.FC<TableProps> = ({ data }) => {
+const Table: React.FC<TableProps> = ({ data, onCheckboxChange }) => {
   const rows = data.map((k) => createData(k.date, k.people, k.price, k.isFree, k.isPersonal, k.isJumps));
 
   return (
@@ -32,13 +32,12 @@ const Table: React.FC<TableProps> = ({ data }) => {
         </TableHead>
 
         <TableBody>
-          {rows.map((row) => (
+          {rows.map((row, index) => (
             <TableRow key={row.id}>
               <TableCell>
                 <Checkbox
-                  /* indeterminate={numSelected > 0 && numSelected < rowCount}
-                  checked={numSelected === rowCount}
-                  onChange={onSelectAllClick} */
+                  name={`${index}`}
+                  onClick={onCheckboxChange}
                 />
               </TableCell>
               <TableCell component='th' scope='row'>

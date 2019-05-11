@@ -1,4 +1,42 @@
-import { countWorkout } from '../utils';
+import { countWorkout, getIdFromIndexes } from '../utils';
+const workoutsMock = [
+  { 
+    date: new Date,
+    people: 0,
+    price: 100,
+    isPersonal: false,
+    isJumps: false,
+    isFree: false,
+    _id: 'jsjs2345',
+  },
+  { 
+    date: new Date,
+    people: 0,
+    price: 100,
+    isPersonal: false,
+    isJumps: false,
+    isFree: false,
+    _id: '23asx',
+  },
+  { 
+    date: new Date,
+    people: 0,
+    price: 100,
+    isPersonal: false,
+    isJumps: false,
+    isFree: false,
+    _id: 'qwe213fdbd',
+  },
+  { 
+    date: new Date,
+    people: 0,
+    price: 100,
+    isPersonal: false,
+    isJumps: false,
+    isFree: false,
+    _id: 'ir23123',
+  },
+];
 
 test('should return 120, 30 rubles for each workout', () => {
   expect(countWorkout(4)).toBe(120);
@@ -14,4 +52,11 @@ test('should return workout*100', () => {
 
 test('should return workout*100 for Jumps', () => {
   expect(countWorkout(20, false, false, true)).toBe(2000);
+});
+
+test('should return id jsjs2345 and ir23123 from array', () => {
+  const indexes = [0, 3];
+
+  expect(getIdFromIndexes(indexes, workoutsMock)).toContain('ir23123');
+  expect(getIdFromIndexes(indexes, workoutsMock)).toContain('jsjs2345');
 });

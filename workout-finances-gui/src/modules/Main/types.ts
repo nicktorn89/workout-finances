@@ -7,8 +7,9 @@ export interface MainState {
   isFree: boolean;
   isJumps: boolean;
   isPersonal: boolean;
+  indexesToRemove: number[];
   workouts?: WorkoutObject[];
-  [name: string]: boolean | number | WorkoutObject[] | undefined;
+  [name: string]: boolean | number | number[] | WorkoutObject[] | undefined;
 }
 
 export interface MainProps {
