@@ -9,4 +9,5 @@ export type WorkoutObject = {
   isPersonal: boolean;
   isJumps: boolean;
   isFree: boolean;
+  _id?: string;
 };

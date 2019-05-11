@@ -24,9 +24,9 @@ export const createWorkout = createAction(
 
 export const removeWorkout = createAction(
   'removeWorkout',
-  (workout: QueryObject) => {
+  (workouts: QueryObject) => {
     return Service
       .path('api/workouts/removeWorkout')
-      .delete(workout);
+      .post(workouts);
   },
 );

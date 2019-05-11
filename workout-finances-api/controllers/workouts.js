@@ -30,7 +30,7 @@ const addWorkout = (req, res) => {
 				})
 			))
 			.catch((err) => {
-				console.log(err);
+				console.error(err);
 			});
 	} else {
 		return;
@@ -38,19 +38,34 @@ const addWorkout = (req, res) => {
 };
 
 const removeWorkout = (req, res) => {
-	console.log(`Remove workout with id ${req.body}`);
 	if (req.body) {
-		DB.Workouts.deleteOne({
-			_id: req.body.id,
-		})
-			.then((data) => {
+		const idArray = req.body.idArray.slice();
+		let removeWorkouts;
+
+		if (idArray.length > 0 && idArray.length < 2) {
+			removeWorkouts = DB.Workouts.deleteOne({
+				_id: idArray[0],
+			});
+		} else if (idArray.length > 0) {
+			removeWorkouts = DB.Workouts.deleteMany({
+				_id: idArray,
+			});
+		} else {
+			return;
+		}
+
+		removeWorkouts
+			.then(() => {
+				return DB.Workouts.find({});
+			})
+			.then((workouts) => {
 				res.json({
 					status: 0,
-					data: data,
+					workouts: workouts,
 				})
 			})
 			.catch((err) => {
-				console.log(err);
+				console.error(err);
 			});
 	}
 };
@@ -58,7 +73,7 @@ const removeWorkout = (req, res) => {
 function connect(app) {
 	app.get('/workouts', getWorkouts);
 	app.post('/workouts/addWorkout', addWorkout);
-	app.delete('/workouts/removeWorkout', removeWorkout);
+	app.post('/workouts/removeWorkout', removeWorkout);
 };
 
 module.exports = { connect };

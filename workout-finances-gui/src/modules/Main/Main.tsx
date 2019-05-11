@@ -1,18 +1,18 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, MouseEvent as ReactMouseEvent } from 'react';
 import { connect } from 'react-redux';
 import { fetchWorkouts, createWorkout, removeWorkout } from 'src/store/modules/actions';
 import { MainState, MainProps } from './types';
 import {
   MainHeader, HeaderTitle, MainContainer,
   AddWorkout, ButtonsContainer, PeopleNumberInput,
-  PeopleNumberLabel, SwitchLabel,
+  PeopleNumberLabel, SwitchLabel, RemoveWorkout,
 } from './styled';
 import Switch from '@material-ui/core/Switch';
 
 import Table from 'src/components/Table';
 import Slider from 'src/components/Slider';
 import Modal from 'src/components/Modal';
-import { countWorkout } from './utils';
+import { countWorkout, getIdFromIndexes } from './utils';
 import { RootStore } from 'src/store/types';
 
 class Main extends React.Component<MainProps, MainState> {
@@ -23,6 +23,7 @@ class Main extends React.Component<MainProps, MainState> {
     isJumps: false,
     peopleCount: 0,
     workouts: this.props.workoutsArray,
+    indexesToRemove: [],
   };
 
   public componentDidMount = () => {
@@ -34,6 +35,19 @@ class Main extends React.Component<MainProps, MainState> {
     if (prevProps.workoutsArray !== this.props.workoutsArray) {
       this.setState({ workouts: this.props.workoutsArray });
     }
+  }
+
+  public addIndexes = (e: ReactMouseEvent<HTMLElement, MouseEvent>) => {
+    let newIndexes: number[] = [...this.state.indexesToRemove];
+    const elementIndex = +(e.target as HTMLInputElement).name;
+
+    if ((e.target as HTMLInputElement).checked) {
+      newIndexes.push(elementIndex);
+    } else {
+      newIndexes = newIndexes.filter((index) => index !== elementIndex);
+    }
+
+    this.setState({ indexesToRemove: newIndexes });
   }
 
   public toggleModal = () => {
@@ -61,10 +75,14 @@ class Main extends React.Component<MainProps, MainState> {
     this.toggleModal();
   }
 
-  public removeWorkout = (id: string) => {
+  public removeWorkout = () => {
     const { removeWorkout } = this.props;
+    const { indexesToRemove, workouts } = this.state;
 
-    removeWorkout && removeWorkout({ id });
+    const idArray = getIdFromIndexes(indexesToRemove, workouts!);
+
+    removeWorkout && removeWorkout({ idArray });
+    this.setState({ indexesToRemove: [] });
   }
 
   public setDefaultValues = () => {
@@ -106,7 +124,10 @@ class Main extends React.Component<MainProps, MainState> {
 
         <Slider />
 
-        <Table data={workouts!} />
+        <Table
+          onCheckboxChange={this.addIndexes}
+          data={workouts!} 
+        />
 
         <ButtonsContainer>
           <AddWorkout
@@ -116,6 +137,14 @@ class Main extends React.Component<MainProps, MainState> {
           >
             Добавить тренировку
           </ AddWorkout>
+          
+          <RemoveWorkout
+            color='secondary'
+            variant='contained'
+            onClick={this.removeWorkout}
+          >
+            Удалить тренировку
+          </ RemoveWorkout>
         </ButtonsContainer>
 
         <Modal
