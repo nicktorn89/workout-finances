@@ -1,0 +1,5 @@
+language: node_js
+before_install:
+  - cd workout-finances-gui
+node_js:
+  - "7"
