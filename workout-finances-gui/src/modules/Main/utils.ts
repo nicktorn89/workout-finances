@@ -4,9 +4,9 @@ import * as R from 'ramda';
 export const countWorkout = (peopleCount: number, personal?: boolean, free?: boolean, jumps?: boolean): number => {
   if (free) return 0;
 
-  if (personal) return peopleCount * 100;
+  if (personal) return peopleCount * 90;
 
-  if (jumps) return peopleCount * 100;
+  if (jumps) return peopleCount * 50;
 
   return peopleCount * 30;
 };

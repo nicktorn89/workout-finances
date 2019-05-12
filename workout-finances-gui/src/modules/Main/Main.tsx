@@ -122,7 +122,7 @@ class Main extends React.Component<MainProps, MainState> {
           </HeaderTitle>
         </MainHeader>
 
-        <Slider />
+        <Slider date={new Date} />
 
         <Table
           onCheckboxChange={this.addIndexes}
@@ -163,6 +163,8 @@ class Main extends React.Component<MainProps, MainState> {
           <PeopleNumberInput
             id='people-number'
             defaultValue={''}
+            min={1}
+            max={Infinity}
             type='number'
             InputLabelProps={{
               shrink: true,
