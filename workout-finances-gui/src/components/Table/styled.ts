@@ -4,6 +4,13 @@ import styled from 'styled-components';
 // @ts-nocheck
 export const MaterialTable: any = styled(Table)`
   width: 80%;
+  .table-head-cell {
+    font-size: 1.25rem;
+  }
+
+  .table-body-cell {
+    font-size: 1rem;
+  }
 `;
 
 export const MaterialPaper: any = styled(Paper)`

@@ -22,32 +22,61 @@ const Table: React.FC<TableProps> = ({ data, onCheckboxChange }) => {
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Дата</TableCell>
-            <TableCell>Кол-во человек</TableCell>
-            <TableCell>Прибыль</TableCell>
-            <TableCell>Бесплатная</TableCell>
-            <TableCell>Персональная</TableCell>
-            <TableCell>Джампы</TableCell>
+            <TableCell className='table-head-cell'>Дата</TableCell>
+            <TableCell className='table-head-cell'>Кол-во человек</TableCell>
+            <TableCell className='table-head-cell'>Прибыль</TableCell>
+            <TableCell className='table-head-cell'>Бесплатная</TableCell>
+            <TableCell className='table-head-cell'>Персональная</TableCell>
+            <TableCell className='table-head-cell'>Джампы</TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
           {rows.map((row, index) => (
             <TableRow key={row.id}>
-              <TableCell>
+              <TableCell className='table-body-cell'>
                 <Checkbox
                   name={`${index}`}
                   onClick={onCheckboxChange}
                 />
               </TableCell>
-              <TableCell component='th' scope='row'>
+              <TableCell 
+                className='table-body-cell'
+                component='th' 
+                scope='row'
+              >
                 {`${row.date}`}
               </TableCell>
-              <TableCell align='left'>{row.people}</TableCell>
-              <TableCell align='left'>{row.salary}</TableCell>
-              <TableCell align='left'>{row.isFree && <Done />}</TableCell>
-              <TableCell align='left'>{row.isPersonal && <Done />}</TableCell>
-              <TableCell align='left'>{row.isJumps && <Done />}</TableCell>
+              <TableCell 
+                className='table-body-cell' 
+                align='left'
+              >
+                {row.people}
+              </TableCell>
+              <TableCell 
+                className='table-body-cell' 
+                align='left'
+              >
+                {row.salary}
+              </TableCell>
+              <TableCell 
+                className='table-body-cell' 
+                align='left'
+              >
+                {row.isFree && <Done />}
+              </TableCell>
+              <TableCell 
+                className='table-body-cell' 
+                align='left'
+              >
+                {row.isPersonal && <Done />}
+              </TableCell>
+              <TableCell 
+                className='table-body-cell' 
+                align='left'
+              >
+                {row.isJumps && <Done />}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
