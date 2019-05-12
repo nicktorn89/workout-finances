@@ -5,7 +5,9 @@ import { SliderContainer, DateTitle } from './styled';
 import ArrowLeftRounded  from '@material-ui/icons/ArrowLeftRounded';
 import ArrowRightRounded  from '@material-ui/icons/ArrowRightRounded';
 
-const Slider: React.FC<SliderProps> = ({}) => {
+const Slider: React.FC<SliderProps> = ({ date }) => {
+  const month = date && date.getMonth();
+
   return(
     <SliderContainer>
       <IconButton>
@@ -13,7 +15,7 @@ const Slider: React.FC<SliderProps> = ({}) => {
       </IconButton>
 
       <DateTitle>
-        1 половина марта
+        {date ? `1 половина ${month}` : '1 половина'}
       </DateTitle>
 
       <IconButton>
