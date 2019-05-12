@@ -8,9 +8,7 @@ function routes() {
   return (
     <Router>
       <Suspense fallback={<Circle />}>
-        <div>
-          <Route exact={true} path='/' component={Main} />
-        </div>
+        <Route exact={true} path='/' component={Main} />
       </Suspense>
     </Router>
   );

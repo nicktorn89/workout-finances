@@ -14,10 +14,25 @@ export const HeaderTitle: any = styled(Typography)`
   margin-top: 1.2rem !important;
 `;
 
+export const SumTitle: any = styled(Typography)`
+  font-size: 28px !important;
+  margin-left: 10% !important;
+  margin-top: 1.2rem !important;
+  display: flex !important;
+`;
+
+export const SumNumber: any = styled(Typography)`
+  font-size: 30px !important;
+  margin-left: 1rem !important;
+`;
+
 export const MainContainer = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
+  background-image: url('https://www.foothillsfoodbank.com/wp-content/uploads/2018/09/bananas-BG.png');
+  background-repeat: repeat;
 `;
 
 export const ButtonsContainer = styled.div`
@@ -30,9 +45,11 @@ export const ButtonsContainer = styled.div`
 
 export const AddWorkout: any = styled(Button)`
   margin-right: 1rem !important;
+  font-size: 1.2rem !important;
 `;
 
 export const RemoveWorkout: any = styled(Button)`
+  font-size: 1.2rem !important;
 `;
 
 export const PeopleNumberInput: any = styled(TextField)`

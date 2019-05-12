@@ -1,4 +1,5 @@
-import { countWorkout, getIdFromIndexes } from '../utils';
+import { countWorkout, getIdFromIndexes, getWorkoutsPriceSum } from '../utils';
+import { WorkoutObject } from 'src/store/modules/types';
 const workoutsMock = [
   { 
     date: new Date,
@@ -30,7 +31,7 @@ const workoutsMock = [
   { 
     date: new Date,
     people: 0,
-    price: 100,
+    price: 200,
     isPersonal: false,
     isJumps: false,
     isFree: false,
@@ -59,4 +60,21 @@ test('should return id jsjs2345 and ir23123 from array', () => {
 
   expect(getIdFromIndexes(indexes, workoutsMock)).toContain('ir23123');
   expect(getIdFromIndexes(indexes, workoutsMock)).toContain('jsjs2345');
+});
+
+test('should return sum from all workouts equal to 500', () => {
+  expect(getWorkoutsPriceSum(workoutsMock)).toEqual(500);
+});
+
+test('should return 399, since we change one workout to -1', () => {
+  const newWorkouts = [...workoutsMock];
+  newWorkouts[0].price = -1;
+
+  expect(getWorkoutsPriceSum(newWorkouts)).toEqual(399);
+});
+
+test('should return 0 if array is empty', () => {
+  const emptyWorkouts: WorkoutObject[] = [];
+
+  expect(getWorkoutsPriceSum(emptyWorkouts)).toEqual(0);
 });

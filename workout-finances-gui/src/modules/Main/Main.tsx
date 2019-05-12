@@ -5,14 +5,14 @@ import { MainState, MainProps } from './types';
 import {
   MainHeader, HeaderTitle, MainContainer,
   AddWorkout, ButtonsContainer, PeopleNumberInput,
-  PeopleNumberLabel, SwitchLabel, RemoveWorkout,
+  PeopleNumberLabel, SwitchLabel, RemoveWorkout, SumNumber, SumTitle,
 } from './styled';
 import Switch from '@material-ui/core/Switch';
 
 import Table from 'src/components/Table';
 import Slider from 'src/components/Slider';
 import Modal from 'src/components/Modal';
-import { countWorkout, getIdFromIndexes } from './utils';
+import { countWorkout, getIdFromIndexes, getWorkoutsPriceSum } from './utils';
 import { RootStore } from 'src/store/types';
 
 class Main extends React.Component<MainProps, MainState> {
@@ -146,6 +146,12 @@ class Main extends React.Component<MainProps, MainState> {
             Удалить тренировку
           </ RemoveWorkout>
         </ButtonsContainer>
+
+        {workouts && 
+          <SumTitle>Общая заработная плата: 
+            <SumNumber>{getWorkoutsPriceSum(workouts)}₽</SumNumber>
+          </SumTitle>
+        }
 
         <Modal
           isActive={activeModal}
