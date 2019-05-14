@@ -76,3 +76,7 @@ html, body, #root {
 	width: 100%;
 	height: 100%;
 }
+
+html {
+	background: url('https://www.foothillsfoodbank.com/wp-content/uploads/2018/09/bananas-BG.png') repeat center center fixed;
+}

@@ -3,6 +3,7 @@ import { TableProps } from './types';
 import { TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
 import Done from '@material-ui/icons/Done';
 import Checkbox from '@material-ui/core/Checkbox';
+import moment from 'moment';
 import { MaterialTable, MaterialPaper } from './styled';
 
 let id = 0;
@@ -32,53 +33,66 @@ const Table: React.FC<TableProps> = ({ data, onCheckboxChange }) => {
         </TableHead>
 
         <TableBody>
-          {rows.map((row, index) => (
-            <TableRow key={row.id}>
-              <TableCell className='table-body-cell'>
-                <Checkbox
-                  name={`${index}`}
-                  onClick={onCheckboxChange}
-                />
-              </TableCell>
-              <TableCell 
-                className='table-body-cell'
-                component='th' 
-                scope='row'
-              >
-                {`${row.date}`}
-              </TableCell>
-              <TableCell 
-                className='table-body-cell' 
-                align='left'
-              >
-                {row.people}
-              </TableCell>
-              <TableCell 
-                className='table-body-cell' 
-                align='left'
-              >
-                {row.salary}
-              </TableCell>
-              <TableCell 
-                className='table-body-cell' 
-                align='left'
-              >
-                {row.isFree && <Done />}
-              </TableCell>
-              <TableCell 
-                className='table-body-cell' 
-                align='left'
-              >
-                {row.isPersonal && <Done />}
-              </TableCell>
-              <TableCell 
-                className='table-body-cell' 
-                align='left'
-              >
-                {row.isJumps && <Done />}
-              </TableCell>
-            </TableRow>
-          ))}
+          {rows.map((row, index) => {
+            const rowMonth = moment(row.date).month() + 1 < 10 
+              ? `0${moment(row.date).month()}`
+              : moment(row.date).month() + 1;
+            const rowHour = moment(row.date).hour() < 10 
+              ? `0${moment(row.date).hour()}`
+              : moment(row.date).hour() + 1;
+            const rowMinute = moment(row.date).minute() < 10 
+              ? `0${moment(row.date).minute()}`
+              : moment(row.date).minute();
+
+            return (
+              <TableRow key={row.id}>
+                <TableCell className='table-body-cell'>
+                  <Checkbox
+                    name={`${index}`}
+                    onClick={onCheckboxChange}
+                  />
+                </TableCell>
+                <TableCell
+                  className='table-body-cell'
+                  component='th'
+                  scope='row'
+                >
+                  {`${moment(row.date).date()}.${rowMonth}.${moment(row.date).year()} 
+                ${rowHour}:${rowMinute}`}
+                </TableCell>
+                <TableCell
+                  className='table-body-cell'
+                  align='left'
+                >
+                  {row.people}
+                </TableCell>
+                <TableCell
+                  className='table-body-cell'
+                  align='left'
+                >
+                  {row.salary}
+                </TableCell>
+                <TableCell
+                  className='table-body-cell'
+                  align='left'
+                >
+                  {row.isFree && <Done />}
+                </TableCell>
+                <TableCell
+                  className='table-body-cell'
+                  align='left'
+                >
+                  {row.isPersonal && <Done />}
+                </TableCell>
+                <TableCell
+                  className='table-body-cell'
+                  align='left'
+                >
+                  {row.isJumps && <Done />}
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </MaterialTable>
     </MaterialPaper>

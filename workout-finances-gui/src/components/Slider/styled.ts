@@ -13,6 +13,6 @@ export const SliderContainer = styled.div`
 
 export const DateTitle: any = styled(Typography)`
   margin: 0 2rem !important;
-  font-size: 14px !important;
+  font-size: 18px !important;
   font-weight: 700 !important;
 `;
