@@ -1,6 +1,6 @@
 import React, { ChangeEvent, MouseEvent as ReactMouseEvent } from 'react';
 import { connect } from 'react-redux';
-import { fetchWorkouts, createWorkout, removeWorkout } from 'src/store/modules/actions';
+import { fetchWorkouts, createWorkout, removeWorkout, changePart } from 'src/store/modules/actions';
 import { MainState, MainProps } from './types';
 import {
   MainHeader, HeaderTitle, MainContainer,
@@ -8,11 +8,12 @@ import {
   PeopleNumberLabel, SwitchLabel, RemoveWorkout, SumNumber, SumTitle,
 } from './styled';
 import Switch from '@material-ui/core/Switch';
+import moment from 'moment';
 
 import Table from 'src/components/Table';
 import Slider from 'src/components/Slider';
 import Modal from 'src/components/Modal';
-import { countWorkout, getIdFromIndexes, getWorkoutsPriceSum } from './utils';
+import { countWorkout, getIdFromIndexes, getWorkoutsPriceSum, divideMonth } from './utils';
 import { RootStore } from 'src/store/types';
 
 class Main extends React.Component<MainProps, MainState> {
@@ -65,7 +66,7 @@ class Main extends React.Component<MainProps, MainState> {
       isPersonal,
       isFree,
       isJumps,
-      date: new Date(),
+      date: moment().toDate(),
       people: peopleCount,
       price: countWorkout(peopleCount, isPersonal, isFree, isJumps),
     };
@@ -108,8 +109,14 @@ class Main extends React.Component<MainProps, MainState> {
     this.setState({ [name]: checked, [`${switches[0]}`]: false, [`${switches[1]}`]: false });
   }
 
+  public handleSliderChange = (isIncrement: boolean) => (): void => {
+    this.props.changePart && this.props.changePart(isIncrement);
+  }
+
   public render = () => {
     const { activeModal, isPersonal, isFree, isJumps, workouts } = this.state;
+    const { currentPart, currentMonth, currentYear, changePart } = this.props;
+    divideMonth(workouts!);
 
     return (
       <MainContainer>
@@ -122,7 +129,12 @@ class Main extends React.Component<MainProps, MainState> {
           </HeaderTitle>
         </MainHeader>
 
-        <Slider date={new Date} />
+        <Slider 
+          currentMonth={currentMonth}
+          currentYear={currentYear}
+          currentPart={currentPart}
+          onClick={this.handleSliderChange}
+        />
 
         <Table
           onCheckboxChange={this.addIndexes}
@@ -208,9 +220,13 @@ const mapDispatchToProps = {
   fetchWorkouts,
   createWorkout,
   removeWorkout,
+  changePart,
 };
 
-const mapStateToProps = ({ workouts }: RootStore) => ({
+const mapStateToProps = ({ workouts, currentMonth, currentPart, currentYear }: RootStore) => ({
+  currentPart,
+  currentMonth,
+  currentYear,
   workoutsArray: workouts,
 });
 

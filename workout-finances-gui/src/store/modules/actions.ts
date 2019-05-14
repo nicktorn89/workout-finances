@@ -30,3 +30,10 @@ export const removeWorkout = createAction(
       .post(workouts);
   },
 );
+
+export const changePart = createAction(
+  'changePart',
+  (isIncrement: boolean) => {
+    return { isIncrement };
+  },
+);
