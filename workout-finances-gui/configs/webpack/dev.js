@@ -16,7 +16,7 @@ module.exports = merge(commonConfig, {
     hot: true, // enable HMR on the server
     proxy: {
       '/api': {
-        target: 'http://localhost:3004',
+        target: 'http://localhost:8084',
         secure: false,
         changeOrigin: true,
         pathRewrite: {'^/api' : ''}
