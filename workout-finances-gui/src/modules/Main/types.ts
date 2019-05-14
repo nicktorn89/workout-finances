@@ -1,5 +1,5 @@
 import { WorkoutObject } from 'src/store/modules/types';
-import { fetchWorkouts, createWorkout, removeWorkout } from 'src/store/modules/actions';
+import { fetchWorkouts, createWorkout, removeWorkout, changePart } from 'src/store/modules/actions';
 
 export interface MainState {
   activeModal: boolean;
@@ -17,4 +17,17 @@ export interface MainProps {
   fetchWorkouts?: typeof fetchWorkouts;
   createWorkout?: typeof createWorkout;
   removeWorkout?: typeof removeWorkout;
+  changePart?: typeof changePart;
+  currentPart?: 'first' | 'second';
+  currentMonth?: number;
+  currentYear?: number;
+}
+
+export interface TimeObject {
+  [key: number]: {
+    [key: number]: { 
+      first: WorkoutObject[];
+      second: WorkoutObject[];
+    };
+  };
 }

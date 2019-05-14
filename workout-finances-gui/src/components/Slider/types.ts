@@ -1,3 +1,6 @@
 export interface SliderProps {
-  date?: Date;
+  currentPart?: 'first' | 'second';
+  currentMonth?: number;
+  currentYear?: number;
+  onClick?: (isIncrement: boolean) => () => void;
 }

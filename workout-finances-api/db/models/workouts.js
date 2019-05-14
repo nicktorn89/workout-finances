@@ -4,6 +4,7 @@ const workoutSchema = new mongoose.Schema({
 	date: {
 		type: Date,
 		default: Date.now,
+		required: true,
 	},
 	people: {
 		type: Number,
