@@ -15,7 +15,4 @@ script:
 
 after_success:
   - echo "${SSH_CODE}" | base64 --decode >/tmp/sftp_rsa
-  - curl --ftp-create-dirs
-      -T filename
-      --key /tmp/sftp_rsa
-      sftp://${DEPLOY_LOGIN}:${DEPLOY_PASSWORD}@$DEPLOY_HOST/home/deploy/workout-finances/gui/dist
+  - sftp ${DEPLOY_LOGIN}:${DEPLOY_PASSWORD}@$DEPLOY_HOST:workout-finances/gui/dist
