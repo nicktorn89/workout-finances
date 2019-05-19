@@ -1,6 +1,6 @@
 {
   "name": "workout-count",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Count salary for all workouts",
   "author": "vlad komanchy",
   "scripts": {

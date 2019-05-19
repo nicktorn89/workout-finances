@@ -1,5 +1,15 @@
 language: node_js
 before_install:
   - cd workout-finances-gui
+  - ssh-keyscan -t $TRAVIS_SSH_KEY_TYPES -H $DEPLOY_HOST 2>&1 | tee -a $HOME/.ssh/known_hosts
 node_js:
   - "7"
+
+branches:
+  only:
+  - master
+  - develop
+
+script:
+  - npm run build
+  - scp -r dist/ $DEPLOY_LOGIN@$DEPLOY_HOST:/home/deploy/workout-finances/gui/dist

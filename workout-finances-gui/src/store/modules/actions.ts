@@ -8,7 +8,7 @@ export const fetchWorkouts = createAction(
   'fetchWorkouts',
   () => {
     return Service
-      .path('api/workouts')
+      .path('/workouts')
       .get();
   },
 );
@@ -17,7 +17,7 @@ export const createWorkout = createAction(
   'createWorkout',
   (workoutData) => {
     return Service
-      .path('api/workouts/addWorkout')
+      .path('/workouts/addWorkout')
       .post(workoutData);
   },
 );
@@ -26,7 +26,7 @@ export const removeWorkout = createAction(
   'removeWorkout',
   (workouts: QueryObject) => {
     return Service
-      .path('api/workouts/removeWorkout')
+      .path('/workouts/removeWorkout')
       .post(workouts);
   },
 );

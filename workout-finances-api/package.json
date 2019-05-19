@@ -1,6 +1,6 @@
 {
   "name": "menu-builder-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -8,6 +8,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
