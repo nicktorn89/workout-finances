@@ -10,7 +10,9 @@ const initialState: MainStore = {
   workouts: [],
   currentYear: moment().year(),
   currentMonth: moment().month(),
-  currentPart: 'first',
+  currentPart: moment().date() <= 15 
+    ? 'first'
+    : 'second',
 };
 
 export const reducer = createReducer(initialState);
@@ -26,7 +28,7 @@ reducer
   ).on(
     (onSuccess(fetchWorkouts)),
     (state, payload) => {
-      const { currentYear, currentMonth, currentPart } = initialState;
+      const { currentYear, currentMonth, currentPart } = state;
       const allWorkouts = {
         workoutsByTime: divideMonth((payload as { workouts: WorkoutObject[] }).workouts),
       };
@@ -58,6 +60,7 @@ reducer
     (onSuccess(createWorkout)),
     (state, payload) => {
       const { currentYear, currentMonth, currentPart } = initialState;
+
       const allWorkouts = {
         workoutsByTime: divideMonth((payload as { workouts: WorkoutObject[] }).workouts),
       };
@@ -67,6 +70,9 @@ reducer
         ...state,
         ...currentWorkouts,
         ...allWorkouts,
+        currentYear,
+        currentMonth,
+        currentPart,
         isLoading: false,
         isLoaded: true,
       };
@@ -88,7 +94,7 @@ reducer
   ).on(
     (onSuccess(removeWorkout)),
     (state, payload) => {
-      const { currentYear, currentMonth, currentPart } = initialState;
+      const { currentYear, currentMonth, currentPart } = state;
       const allWorkouts = {
         workoutsByTime: divideMonth((payload as { workouts: WorkoutObject[] }).workouts),
       };

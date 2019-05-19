@@ -23,8 +23,8 @@ const Slider: React.FC<SliderProps> = ({ currentPart, currentMonth, currentYear,
 
       <DateTitle>
         {currentPart === 'first'
-          ? `1 половина ${month} ${year}` 
-          : `2 половина ${month} ${year}`}
+          ? `1 половина, ${month} ${year}` 
+          : `2 половина, ${month} ${year}`}
       </DateTitle>
 
       <IconButton
