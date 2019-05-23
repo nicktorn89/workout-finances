@@ -1,7 +1,7 @@
 import { WorkoutObject, MainStore } from 'src/store/modules/types';
 import * as R from 'ramda';
 import moment from 'moment';
-import { TimeObject } from './types';
+import { TimeObject, ChangedMonth } from './types';
 
 export const countWorkout = (peopleCount: number, personal?: boolean, free?: boolean, jumps?: boolean): number => {
   if (free) return 0;
@@ -135,10 +135,4 @@ export const changeMonthPart = ({ workoutsByTime, currentPart, currentMonth, cur
   }
 
   return finalObject;
-};
-
-type ChangedMonth = {
-  currentPart: 'first' | 'second',
-  currentMonth: number;
-  currentYear: number;
 };

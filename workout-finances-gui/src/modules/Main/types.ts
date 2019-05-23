@@ -31,3 +31,9 @@ export interface TimeObject {
     };
   };
 }
+
+export type ChangedMonth = {
+  currentPart: 'first' | 'second',
+  currentMonth: number;
+  currentYear: number;
+};
