@@ -16,16 +16,19 @@ import Modal from 'src/components/Modal';
 import { countWorkout, getIdFromIndexes, getWorkoutsPriceSum, divideMonth } from './utils';
 import { RootStore } from 'src/store/types';
 
-class Main extends React.Component<MainProps, MainState> {
-  public readonly state = {
-    activeModal: false,
-    isPersonal: false,
-    isFree: false,
-    isJumps: false,
-    peopleCount: 0,
-    workouts: this.props.workoutsArray,
-    indexesToRemove: [],
-  };
+export class Main extends React.Component<MainProps, MainState> {
+  constructor(props: MainProps) {
+    super(props);
+    this.state = {
+      activeModal: false,
+      isPersonal: false,
+      isFree: false,
+      isJumps: false,
+      peopleCount: 0,
+      workouts: this.props.workoutsArray,
+      indexesToRemove: [],
+    };
+  }
 
   public componentDidMount = () => {
     const { fetchWorkouts } = this.props;
@@ -116,7 +119,7 @@ class Main extends React.Component<MainProps, MainState> {
   public render = () => {
     const { activeModal, isPersonal, isFree, isJumps, workouts } = this.state;
     const { currentPart, currentMonth, currentYear, changePart } = this.props;
-    divideMonth(workouts!);
+    workouts && divideMonth(workouts);
 
     return (
       <MainContainer>
@@ -145,6 +148,7 @@ class Main extends React.Component<MainProps, MainState> {
           <AddWorkout
             color='primary'
             variant='contained'
+            className='add-workout'
             onClick={this.toggleModal}
           >
             Добавить тренировку
