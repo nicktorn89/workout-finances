@@ -12,11 +12,3 @@
   `npm i` <br/>
 2. 🚀 **Start** <br/>
   `npm run start` - for both directories
-  
- ## Workout Finances API
-
-API was created with NestJS and MongoDB. TypeScript was used with NestJS. This API was intended to save history of workouts and stats about it.
-
- ## Workout Finances GUI
- 
- This is main part of project, that contains major part of logic. Graphical Interface have ability to add workouts, get all of them, remove them and modificate it. Workout Finances GUI have part with Stats that show changes in workouts.
